@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aula01-JS</title>
+  </head>
+  <body>
+    <h1 class="tilindos" id="tituloh1"
+        onmouseover="emiteAlertinha()"
+        onmouseleave="emiteError()"
+        onclick="alteraH1noClique()">
+      Vai Curintians
+    </h1 >
+    <h2 class="tilindos" id="tituloh2"
+    >esse meu h2 do coração</h2>
+    <h3 class="tilindos" id="tituloh3"
+    >Lorem ipsum dolor fuga explicabo.</h3>
+    <input type="number"
+    onkeyup="calculaTabuada(this.value)">
+    <h3 class="tilindos" id="tabuada"
+        onclick="calculaTabuada( 9 )"
+    >Aqui vai uma tabuada.</h3>
+    <button onclick="emiteAlerta()">Clique aqui</button>
+
+    <script type="text/javascript" src="index.js"></script>
+    <script type="text/javascript">
+      const nome = "Gabriel";
+      const sobrenome = "Datena";
+
+      function emiteAlerta() {
+        alert("Voce clicou em um botão");
+        console.log(nome + " chupa " + sobrenome);
+        console.error("mensagem de erro");
+        console.warn("mensagem de erro que não é grave");
+        console.info("mensagem de informação");
+        console.table([555, 2222, 555]);
+      }
+
+      const emiteError = function () {
+        console.error("Isso é uma função em uma variável");
+      };
+
+      const emiteAlertinha = function () {
+        console.warn("Esse é um alertinha");
+      };
+
+      //pegando elementos via js      
+
+      const alteraH1 = function(novoTexto) {
+        const noH1 = document.querySelector('h1');
+        noH1.innerText = novoTexto ;
+      }
+
+      const alteraH1noClique = function() {
+        const noH1 = document.querySelector('h1');
+        noH1.innerText = "alterei o titulo com um clique" ;
+      }
+
+      const alteraPeloId = function(){
+        //const objPeloIde = document.querySelector('#idParaAlterar')
+        const h1 = document.querySelector('#tituloh3')
+        h1.innerText = "ferrou total"
+      }
+
+      const alteraPeloClasse = function(){
+        //const objPeloIde = document.querySelector('#idParaAlterar')
+        const h1 = document.querySelector('.tilindos');
+        h1.innerText = "Esse Brasil tá perdido";
+      }
+
+      const calculaTabuada = function(valor){
+        const tabuada = document.querySelector('#tabuada');
+        tabuada.innerText = "";
+        for (let index = 1; index <= 10; index++) {            
+            tabuada.innerHTML += `<p>${index} x ${valor} = ${index * valor} </p>`;
+        }
+      }
+
+      alteraH1("chupa curinthias");
+      alteraPeloId();
+      alteraPeloClasse();
+
+
+    </script>
+  </body>
+</html>
