@@ -26,43 +26,52 @@ let numeroSorteado = Math.floor(Math.random() * palavrasSecretas.length);
 palavraSecreta = palavrasSecretas[numeroSorteado];
 dica = dicas[numeroSorteado];
 tentativas = 3;
-console.log(palavraSecreta);
+/* console.log(palavraSecreta);
 console.log(dica);
-console.log(tentativas);
+console.log(tentativas); */
 
 let letrasAcertadas = [];
 for (const iterator of palavraSecreta) {
   letrasAcertadas.push("_");
 }
-console.log(letrasAcertadas.join(" "));
+/* console.log(letrasAcertadas.join(" ")); */
 
 const renderizaJogo = function () {
     let renderGame = document.getElementById('renderForca');
   if (tentativas == 0) {
     renderGame.innerHTML = `
     <h2>Descubra a palavra secreta com ${palavraSecreta.length} letras.</h2>
-    <h3>Você tem ${tentativas} tentativas.</h3>
+    <h3>${dica}</h3>
+    <h3>Agora tente acertar a palavra secreta.</h3>
     <h2>${letrasAcertadas.join(" ")}</h2>
-    <label  for="palpitePalavra">insira seu palpite de palavra</label>
-    <input onchange="palpitePalavra(this)" id="palpitePalavra" type="text">`;
+    <label  for="palpitePalavra">insira seu palpite da palavra</label>
+    <input onchange="palpitePalavra(this.value)" id="palpitePalavra" type="text">    
+    `;
   }else{
       renderGame.innerHTML = `
         <h2>Descubra a palavra secreta com ${palavraSecreta.length} letras.</h2>
+        <h3>${dica}</h3>
         <h3>Você tem ${tentativas} tentativas.</h3>
         <h2>${letrasAcertadas.join(" ")}</h2>
+        <label  for="palpiteLetra">insira uma letra</label>
+        <input onkeyup="palpiteLetra(this.value)" id="palpiteLetra" type="text">
         `;
   }
-};
+}
+
 const palpiteLetra = function (letra) {
-    if (palavraSecreta.includes(letra)) {
-        const indicesLetra = [];
+    if (palavraSecreta.includes(letra)) {        
         for (let i = 0; i < palavraSecreta.length; i++) {
-            if (palavraSecreta[i] === letra) {
-                indicesLetra.push(i);
+            if (palavraSecreta[i] == letra) {
+              letrasAcertadas[i] = letra ;
             }
         }
-        console.log("Os índices são:", indicesLetra);
+        
     }
+    tentativas--;
+    let limpaLetra = document.getElementById("palpiteLetra");
+    limpaLetra.value = '';
+    renderizaJogo();
 }
 
 const atualizaLacunas = function (arrayIndicesLetraAcertadas) {
@@ -71,7 +80,26 @@ const atualizaLacunas = function (arrayIndicesLetraAcertadas) {
     }
     renderizaJogo();
 }
+
+/* aqui verifica se a palavra digitada pelo jogador é igual a palavra secreta  */
 const palpitePalavra = function (palavra) {
-    /* implementar */
+    if (palavra == palavraSecreta) {
+        completaPalavraSecreta();
+        alert("Parabéns, Você acertou!");
+    }else{
+        alert("Não foi dessa vez, Você errou!");
+    }    
+    let limpaPalavra = document.getElementById("palpitePalavra");
+    limpaPalavra.value = '';
+    renderizaJogo();    
 }
+
+/* função para mostrar a palavra secreta no array letrasAcertadas */
+const completaPalavraSecreta = function () {
+    for (let i = 0; i < palavraSecreta.length; i++) {
+        letrasAcertadas[i] = palavraSecreta[i];
+    }
+    renderizaJogo();
+}
+
 renderizaJogo();
