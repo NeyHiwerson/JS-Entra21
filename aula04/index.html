@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./assets/css/estilo.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <section>
+      <h1>Numbers</h1>
+      <label for="">Digite algo</label>
+      <input type="text" name="myInput" onkeyup="pegaInput(this)" />
+      <div id="render_number"></div>
+    </section>
+
+    <section>
+      <h1>Arrays</h1>
+    </section>
+
+    <section>
+      <h1>Jogo da Forca</h1>
+      <button onclick="abrirJogoDaForca()">Clique Aqui</button>
+    </section>
+
+    <script>
+        function abrirJogoDaForca() {
+            window.open('jogoDaForca.html', '_blank');
+        }
+      </script>
+    <script type="text/javascript" src="./assets/js/numbers.js"></script>
+    <script type="text/javascript" src="./assets/js/arrays.js"></script>
+  </body>
+</html>
