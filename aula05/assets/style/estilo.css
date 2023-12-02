@@ -1,0 +1,8 @@
+.active {
+  color: green;
+}
+
+#temporizador1 {
+  padding: 2em;
+  text-align: center;
+}
