@@ -1,4 +1,13 @@
+/* 
+Para gerar certificado digital para seu site gratis 
+Let's Encrypt.
+ */
 
+/* 
+localStorage - armazena dados no navegador
+sessionStorage - armazena na sessão do navegador
+cookies - armazena dados no navegador e envia em todas as requisições
+*/
 const url_base = "https://pokeapi.co/api/v2/";
 
  let endpoint = "pokemon";
